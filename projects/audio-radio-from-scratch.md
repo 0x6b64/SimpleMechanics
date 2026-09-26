@@ -565,3 +565,777 @@ and the reverse:
 → sound
 
 The objective is not merely to own working devices. It is to understand why each device works at the component and physical-system level.
+
+
+---
+
+# How to Use This Plan
+
+This document is intended to be executable as a syllabus rather than merely a project list.
+
+For each stage:
+
+1. Read only the prerequisite material listed for that stage.
+2. Answer the knowledge-gate questions.
+3. Perform the prerequisite experiments.
+4. Build one subsystem at a time.
+5. Write down expected voltage, current, frequency, or waveform before measuring it.
+6. Compare prediction against measurement.
+7. Integrate the next subsystem only after the current one behaves as expected.
+
+Use a lab notebook with this template:
+
+```text
+Question:
+Setup:
+Prediction:
+Measurement:
+Difference:
+Explanation:
+Change made:
+Result:
+```
+
+The objective is not to memorize electronics theory. It is to repeatedly connect a physical principle to a circuit, a measurement, and finally a working device.
+
+# Core References
+
+## Electronics Fundamentals — Free
+
+**All About Circuits textbook**
+https://www.allaboutcircuits.com/textbook/
+
+Use:
+- Direct Current for voltage, current, resistance, networks, measurement, magnetism.
+- Alternating Current for capacitors, inductors, impedance, resonance and filters.
+- Semiconductors for diodes, BJTs and amplifiers.
+
+This is the default reference for basic concepts in this plan.
+
+**MIT OpenCourseWare 6.002 — Circuits and Electronics**
+https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/
+
+This is a full undergraduate circuits course with lectures, problem sets and exams. Use individual sections when a topic needs more depth; completing the entire course is not a prerequisite.
+
+## Radio Engineering
+
+**ARRL technical/instruction resources**
+https://www.arrl.org/instruction-arrl-resources
+
+Useful topics include radio fundamentals, oscillators, mixers, receivers, transmitters, antennas, propagation, measurements and construction.
+
+The **ARRL Handbook for Radio Communications** is an optional comprehensive reference rather than required reading.
+
+## Canadian Amateur-Radio Rules
+
+For operation in Canada, the authority is **Innovation, Science and Economic Development Canada (ISED)**.
+
+Certification path:
+https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radio-authorizations/amateur-radio-operator-certification/how-become-amateur-radio-operator-overview
+
+Operating standards, amateur bands, bandwidths and required qualifications:
+https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/regulations-reference-rbr/rbr-4-standards-operation-radio-stations-amateur-radio-service
+
+ISED amateur-radio publications:
+https://ised-isde.canada.ca/site/amateur-radio-operator-certificate-services/en/publications
+
+Treat ISED as authoritative for transmitting privileges in Canada. ARRL is used here as a technical learning resource.
+
+# Safety Boundaries
+
+- Use low-voltage battery or current-limited bench supplies.
+- Do not experiment directly with mains electricity.
+- Disconnect power before rewiring.
+- Set a conservative current limit before powering a new circuit.
+- Check electrolytic capacitor polarity.
+- Use eye protection when clipping component leads.
+- Treat soldering irons and molten solder as burn hazards.
+- Neodymium magnets can pinch fingers and damage magnetically sensitive objects.
+- Start RF work with receivers.
+- Develop and measure transmitter stages into an appropriate dummy load before considering antenna connection.
+- Before transmitting, verify current ISED certification, frequency, bandwidth and operating requirements.
+
+---
+
+# Stage 0 — Detailed Fundamentals
+
+## 0.1 Voltage, Current and Resistance
+
+Read:
+https://www.allaboutcircuits.com/textbook/direct-current/
+
+Be able to explain:
+
+- voltage as potential difference between two nodes
+- current as charge flow
+- resistance
+- Ohm's law
+- electrical power
+- why voltage is measured across two nodes
+- why current measurement changes the current path
+
+### Lab 0A — Ohm's Law
+
+Use a low-voltage supply, resistor and multimeter.
+
+Before connecting the circuit:
+
+1. Measure resistance.
+2. Measure supply voltage.
+3. Calculate expected current with `I = V/R`.
+4. Connect the resistor.
+5. Measure current.
+6. Compare calculation and measurement.
+
+Knowledge gate: if resistance doubles while voltage stays fixed, explain what happens to current and power.
+
+## 0.2 Series/Parallel Networks
+
+Learn voltage division and basic Kirchhoff laws from the same DC textbook.
+
+### Lab 0B — Voltage Divider
+
+Build:
+
+```
+VCC --- R1 ---+--- R2 --- GND
+              |
+            Vout
+```
+
+Calculate Vout before measuring it. Change one resistor and repeat.
+
+Knowledge gate: explain why a voltage divider's output can change when a low-resistance load is connected.
+
+## 0.3 Capacitors
+
+Read the capacitor/RC sections:
+https://www.allaboutcircuits.com/textbook/alternating-current/
+
+Learn:
+
+- charge storage
+- `τ = RC`
+- DC blocking / AC coupling
+- frequency-dependent impedance
+- low-pass and high-pass RC networks
+
+### Lab 0C — RC Response
+
+Apply a step to an RC network.
+
+Predict the time constant, observe capacitor voltage on the oscilloscope, and compare prediction with measurement.
+
+Then feed a sine wave and change frequency. Observe the frequency-dependent response.
+
+## 0.4 Inductors and Magnetism
+
+Use:
+https://www.allaboutcircuits.com/textbook/
+
+Study the sections on inductors, magnetic fields, electromagnetism and electromagnetic induction.
+
+Learn:
+
+- current creates magnetic field
+- changing magnetic flux can induce voltage
+- inductors store energy magnetically
+- inductive impedance depends on frequency
+
+These concepts directly become the speaker, microphone and radio tuner.
+
+## 0.5 Diodes
+
+Read:
+https://www.allaboutcircuits.com/textbook/semiconductors/
+
+Learn:
+
+- forward/reverse bias
+- rectification
+- approximate forward-voltage behavior
+- why weak-signal detection benefits from a low-threshold detector device
+
+### Lab 0D — Rectification
+
+Feed a low-voltage sine wave through a diode and resistor.
+
+Observe input and output simultaneously.
+
+Then add an RC network after the diode and observe how the waveform changes.
+
+This becomes the conceptual basis for the AM detector.
+
+## 0.6 BJTs and Amplification
+
+Use the semiconductor reference above.
+
+Initially learn only:
+
+- base, collector, emitter
+- bias point
+- cutoff and saturation
+- common-emitter configuration
+- small AC signal riding on a DC operating point
+- voltage/current gain
+
+### Lab 0E — Transistor Switch
+
+Use a 2N3904 to control an LED.
+
+### Lab 0F — Common-Emitter Amplifier
+
+Build a simple common-emitter amplifier.
+
+Measure:
+
+- DC node voltages
+- input AC amplitude
+- output AC amplitude
+- approximate voltage gain
+- phase relationship
+
+Knowledge gate: explain the difference between **bias** and the **signal**.
+
+## 0.7 Oscilloscope Skills
+
+Before Stage 1, be able to:
+
+- set volts/div
+- set time/div
+- trigger on a repetitive waveform
+- use two channels
+- measure amplitude
+- measure period
+- calculate frequency
+- understand AC vs DC input coupling
+
+Example knowledge gate:
+
+A 1 kHz waveform has period `T = 1/f = 1 ms`.
+
+---
+
+# Stage 1 — Loudspeaker: Detailed Bring-Up
+
+## Read First
+
+From the core electronics textbook, study:
+
+- magnetic fields
+- electromagnetism
+- force involving a current-carrying conductor
+- AC waveforms
+
+A moving-coil speaker can be mentally decomposed into:
+
+- permanent magnet
+- magnetic gap
+- voice coil
+- diaphragm
+- suspension
+- frame
+
+Your handmade version only needs to reproduce the essential mechanism.
+
+## Build in Two Steps
+
+### Step A — Prove Mechanical Motion
+
+After winding the coil:
+
+1. Measure its DC resistance.
+2. Check continuity.
+3. Position it in the magnetic field.
+4. Apply a small, current-limited DC stimulus briefly.
+5. Observe direction of motion.
+6. Reverse polarity.
+7. Confirm the direction reverses.
+
+This isolates the electromagnetic mechanism from audio.
+
+### Step B — Produce Sound
+
+Use a function generator initially.
+
+Start with a low-amplitude sine wave in the mid-audio range and increase drive conservatively while watching the coil and diaphragm.
+
+Do not assume a phone or laptop audio jack is suitable for driving an arbitrary handmade coil.
+
+## Troubleshooting
+
+No motion:
+- verify continuity
+- verify current flow
+- check magnet position
+- reduce excessive magnetic gap
+
+Motion but weak sound:
+- diaphragm may be too heavy or stiff
+- mechanical coupling may be poor
+- coil may rub
+- diaphragm area may be too small
+
+Rattle/distortion:
+- asymmetric suspension
+- rubbing coil
+- loose winding
+- excessive excursion
+
+## Experiment
+
+Sweep frequency while keeping the test setup otherwise constant.
+
+Record relative response versus frequency.
+
+The important lesson is that a transducer has a **frequency response**.
+
+Knowledge gate: explain the chain:
+
+`electrical waveform -> coil current -> force -> diaphragm acceleration -> pressure wave`
+
+---
+
+# Stage 2 — Microphone: Detailed Bring-Up
+
+## Read First
+
+Study electromagnetic induction/Faraday's law in:
+https://www.allaboutcircuits.com/textbook/
+
+## First Experiment — Reverse the Speaker
+
+Before building another device:
+
+1. Disconnect the Stage 1 speaker from its source.
+2. Connect it to the oscilloscope.
+3. Move/tap the diaphragm or speak close to it.
+4. Look for a generated voltage.
+
+This demonstrates transducer reversibility directly.
+
+## Dedicated Microphone
+
+Compared with the speaker, prioritize:
+
+- lightweight diaphragm
+- lightweight moving coil
+- low-friction motion
+- strong magnetic field
+
+Bring-up order:
+
+`microphone -> oscilloscope`
+
+then
+
+`microphone -> preamp -> oscilloscope`
+
+then
+
+`microphone -> preamp -> audio output stage -> speaker`
+
+Measure at each boundary before adding the next stage.
+
+## Knowledge Gate
+
+Explain why:
+
+- the microphone produces a small electrical signal
+- the speaker requires substantially more power
+- therefore an amplification chain is needed between them
+
+Final milestone:
+
+`voice -> homemade microphone -> discrete amplifier -> homemade speaker`
+
+---
+
+# Stage 3 — AM Radio: Detailed Curriculum
+
+## 3.1 Resonance Before Radio
+
+Read the resonance sections:
+https://www.allaboutcircuits.com/textbook/alternating-current/
+
+Know:
+
+`f_0 = 1/(2π√LC)`
+
+### Lab 3A — Measure LC Resonance
+
+Before attaching an antenna:
+
+1. Build an LC resonant network.
+2. Excite it weakly from a function generator.
+3. Sweep frequency.
+4. Observe the response.
+5. Find measured resonance.
+6. Calculate theoretical resonance.
+7. Explain the discrepancy.
+
+Only after observing resonance on the bench should you use the same principle to select a broadcast station.
+
+## 3.2 Understand AM
+
+Learn to identify:
+
+- carrier
+- modulating/audio signal
+- envelope
+
+If the function generator supports AM, inspect a known AM waveform on the oscilloscope.
+
+## 3.3 Detector Before Receiver
+
+Build the detector independently:
+
+`known AM signal -> diode -> RC -> oscilloscope`
+
+Verify that the output follows the modulation envelope.
+
+## 3.4 Incremental Receiver Integration
+
+Test in this order:
+
+1. `signal source -> tuner -> scope`
+2. `signal source -> tuner -> detector -> scope`
+3. `antenna -> tuner -> detector -> scope/high-impedance earpiece`
+4. `antenna -> tuner -> detector -> amplifier -> scope`
+5. `antenna -> tuner -> detector -> amplifier -> speaker`
+
+## Debugging Strategy
+
+No station:
+- confirm the tuner covers the desired frequency range
+- verify coil continuity
+- verify detector orientation
+- verify antenna connection
+- locate the last stage where a signal is visible
+
+Several stations simultaneously:
+- investigate resonator Q/selectivity
+- investigate antenna loading
+- verify LC values
+
+Weak audio:
+- measure detector output first
+- check whether the amplifier loads the detector
+- separately verify amplifier gain
+- separately verify speaker efficiency
+
+Never debug all stages simultaneously.
+
+Knowledge gate: explain why tuning, detection and amplification are three different operations.
+
+---
+
+# Stage 4 — HF Amateur Receiver: Detailed Curriculum
+
+A **direct-conversion receiver** is recommended as the first HF receiver because it exposes frequency conversion directly.
+
+Conceptual architecture:
+
+```
+                         +----------------+
+                         | local oscillator|
+                         +-------+--------+
+                                 |
+antenna -> RF filter -> mixer ---+-> audio LPF -> audio amp -> headphones
+```
+
+## Read First
+
+ARRL technical resources:
+https://www.arrl.org/instruction-arrl-resources
+
+Study the sections/resources relevant to:
+
+- radio fundamentals
+- receiver architecture
+- oscillators
+- mixers
+- RF filters
+- antennas
+- propagation
+
+Continue using the All About Circuits textbook for component-level circuit questions.
+
+## Module A — Oscillator
+
+Build a low-level oscillator as a bench experiment.
+
+Measure:
+
+- frequency
+- waveform
+- startup behavior
+- short-term frequency drift
+
+Knowledge gate: explain the feedback/energy mechanism that sustains oscillation.
+
+## Module B — Mixer
+
+Test frequency conversion with laboratory signals before using an antenna.
+
+Example reasoning exercise:
+
+- input RF: 7.001 MHz
+- local oscillator: 7.000 MHz
+- difference product: 1 kHz
+
+The important result is observing that nonlinear mixing can translate an RF frequency difference into the audio range.
+
+## Module C — Audio Filter
+
+Build and measure a low-pass filter.
+
+Plot or tabulate response at several frequencies.
+
+## Module D — Audio Amplifier
+
+Reuse concepts from the microphone stage. Verify it independently.
+
+## Module E — RF Input Filter
+
+Build a tuned/band-pass input network and characterize it with low-level signals before attaching the antenna.
+
+## Module F — Receive Antenna
+
+Start simple. A wire receive antenna is enough for initial experiments.
+
+Then learn the relationship:
+
+`λ = c/f`
+
+and build a resonant dipole as a separate antenna experiment.
+
+## Integration
+
+Combine modules in this order:
+
+1. oscillator + mixer
+2. audio filter
+3. audio amplifier
+4. RF input filter
+5. antenna
+
+Probe the interface between every pair of blocks.
+
+## Next Architecture
+
+After the direct-conversion receiver works, study the superheterodyne receiver:
+
+`RF -> mixer -> fixed IF -> IF filter/amplifier -> detector -> audio`
+
+Do not build this first. Its advantages are easier to understand after personally observing direct conversion.
+
+---
+
+# Stage 5 — Amateur Transmitter: Learning and Validation Plan
+
+## Regulatory Gate
+
+Before over-the-air operation, use the current ISED certification process:
+https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radio-authorizations/amateur-radio-operator-certification/how-become-amateur-radio-operator-overview
+
+Verify current operating requirements in RBR-4:
+https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/regulations-reference-rbr/rbr-4-standards-operation-radio-stations-amateur-radio-service
+
+Do not rely on a static summary in this repository for current operating privileges.
+
+## Learn the Blocks
+
+For a first transmitter, study CW because the conceptual chain is comparatively small:
+
+`oscillator -> buffer -> RF output stage -> harmonic filter -> impedance interface -> load/antenna`
+
+Use ARRL technical references for:
+
+- oscillators
+- RF amplification
+- transmitter architectures
+- harmonics
+- output filtering
+- transmission lines
+- impedance matching
+- SWR
+- antennas
+- RF safety
+
+## Development Sequence
+
+Treat every block as a separate laboratory project.
+
+1. Characterize the oscillator at low level.
+2. Study why buffering isolates an oscillator from load changes.
+3. Characterize the RF output stage into a suitable 50 Ω dummy load.
+4. Characterize the output filter independently.
+5. Measure the integrated chain into the dummy load.
+6. Inspect frequency and unwanted spectral components with suitable instrumentation.
+7. Build and measure the antenna as a separate project.
+8. Verify current ISED privileges and requirements.
+9. Only then consider over-the-air operation.
+
+The engineering objective is to be able to account for the signal's frequency, approximate power, load, filtering and spectral cleanliness before an antenna is connected.
+
+## Antenna Reference
+
+ARRL antenna resources:
+https://www.arrl.org/instruction-arrl-resources
+
+Optional deep reference: **The ARRL Antenna Book**.
+
+Study:
+
+- wavelength
+- dipoles
+- feed points
+- coaxial transmission lines
+- characteristic impedance
+- reflections
+- SWR
+- matching
+- radiation pattern
+
+Use a simple dipole as the first antenna architecture rather than optimizing for compactness or gain.
+
+---
+
+# Stage 6 — FM Extension
+
+FM comes last because VHF construction introduces an important principle: **physical geometry becomes part of the circuit**.
+
+At higher frequency:
+
+- wire length matters
+- component leads contribute inductance
+- nearby conductors contribute capacitance
+- breadboards introduce parasitics
+- grounding geometry matters
+- unintended coupling becomes important
+
+Before integrating an FM receiver, separately study and measure:
+
+1. VHF resonance
+2. VHF oscillator behavior
+3. layout sensitivity
+4. frequency conversion
+5. FM detection/discrimination
+
+Then integrate the receiver one block at a time.
+
+---
+
+# Instrumentation Learning Path
+
+## Digital Multimeter — Stage 0
+
+Know how to measure:
+
+- DC voltage
+- resistance
+- continuity
+- DC current
+
+## Oscilloscope — Stage 0/1
+
+Know how to measure:
+
+- waveform vs time
+- amplitude
+- period/frequency
+- DC offset
+- phase relationship between two signals
+
+## Function Generator — Stage 0/1
+
+Use it to replace an unknown real-world source with a known signal.
+
+Examples:
+
+- known audio into speaker
+- known small signal into amplifier
+- frequency sweep into filters
+- known signal into detector experiments
+
+## RF Signal Generator — Stage 3/4
+
+Useful for testing radio stages independently of actual stations and propagation.
+
+## Spectrum Analyzer — Stage 4/5
+
+Understand the distinction:
+
+- oscilloscope: signal versus **time**
+- spectrum analyzer: signal versus **frequency**
+
+This becomes important for oscillators, mixers and transmitter validation.
+
+## Antenna Analyzer / VNA — Stage 5
+
+Use it to make RF impedance visible.
+
+Learn:
+
+- impedance versus frequency
+- resonance
+- SWR
+- basic reflection/S-parameter intuition
+
+---
+
+# What Not to Use Initially
+
+To preserve the learning objective, do not make these the core of the first implementation:
+
+- Bluetooth audio modules
+- integrated audio amplifier boards
+- complete AM/FM receiver ICs
+- SDR as the receiver itself
+- PLL synthesizer modules
+- integrated radio/transceiver modules
+
+They can be introduced later for comparison.
+
+Sophisticated **test equipment is fine**. The restriction is on hiding the mechanism of the device being learned, not on measurement tools.
+
+---
+
+# Suggested 12-Week Path
+
+| Week | Objective |
+|---|---|
+| 1 | DC fundamentals, multimeter, Ohm's law, dividers |
+| 2 | capacitors, inductors, diodes, oscilloscope |
+| 3 | transistor switch and common-emitter amplifier |
+| 4 | loudspeaker build and characterization |
+| 5 | microphone, preamp and microphone-to-speaker chain |
+| 6 | LC resonance, AM waveform and detector |
+| 7 | complete AM receiver |
+| 8 | oscillator and RF-filter experiments |
+| 9 | mixer experiments and direct-conversion modules |
+| 10 | complete HF receive chain and antenna experiments |
+| 11 | transmitter block study and dummy-load measurements |
+| 12 | filtering, antenna measurement, ISED checkpoint and integration |
+
+The calendar is optional. Advance based on demonstrated understanding.
+
+# Definition of Done
+
+At the end, answer these from first principles:
+
+1. Why does current through a speaker coil produce motion?
+2. Why does moving a microphone coil produce voltage?
+3. Why does an LC circuit select a frequency range?
+4. Why can a diode recover audio information from AM?
+5. Why does an analog amplifier need a bias point?
+6. Why does a mixer translate signals between frequencies?
+7. What sustains an oscillator?
+8. How does antenna size relate to wavelength?
+9. Why does antenna/load impedance matter at RF?
+10. Why are transmitter harmonics filtered?
+11. Why can HF propagation permit communication far beyond line of sight?
+12. Why does physical layout increasingly matter as frequency rises?
+
+If an answer reduces to “because that block does it,” return to that experiment. The goal is a physical and circuit-level explanation.
