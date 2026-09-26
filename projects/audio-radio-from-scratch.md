@@ -1553,6 +1553,276 @@ To make this schedule realistic:
 
 The four-day goal is not mastery of electronics or RF engineering. It is a working first-principles mental model backed by physical experiments and functioning prototypes.
 
+# Topic Validation Question Bank
+
+Use these questions **immediately after learning each topic**, before continuing to the experiment that depends on it. Answer without looking at the reference. A correct answer should normally include the causal reason, not only the result.
+
+## Voltage, Current, Resistance and Power
+
+1. What is voltage measured **between**, and why is saying “the voltage at a point” incomplete without a reference?
+2. A 5 V source is connected across 1 kΩ. What current should flow?
+3. If resistance doubles while voltage stays constant, what happens to current?
+4. If voltage doubles across the same resistor, by what factor does resistor power change?
+5. Why is a voltmeter connected in parallel while an ammeter is inserted into the current path?
+6. What could happen if a multimeter configured for current measurement is placed directly across a voltage source?
+
+## Series/Parallel Circuits, Kirchhoff Laws and Voltage Dividers
+
+1. Which electrical quantity is common to components in series?
+2. Which electrical quantity is common to components in parallel?
+3. Two equal resistors form a divider from 6 V to ground. What unloaded midpoint voltage do you predict?
+4. Why can attaching a load change a divider's output voltage?
+5. At a circuit node, why must current entering and leaving balance?
+6. Around a closed loop, how do source voltage rises relate to component voltage drops?
+
+## DC versus AC, Frequency, Period and Amplitude
+
+1. What distinguishes a DC signal from an AC/time-varying signal?
+2. What is the period of a 1 kHz sine wave?
+3. If period decreases, what happens to frequency?
+4. What does amplitude describe physically on an oscilloscope?
+5. Can a waveform contain both a DC offset and an AC component? Describe what it would look like.
+
+## Capacitors and RC Circuits
+
+1. What physical quantity does a capacitor store?
+2. Why does capacitor voltage not change instantaneously in the ideal lumped model?
+3. What is the time constant of a 10 kΩ resistor and 10 µF capacitor?
+4. After several time constants, what qualitative state should an RC charging circuit approach?
+5. Why can a coupling capacitor block DC while passing a changing audio signal?
+6. In an RC low-pass filter, what happens to output amplitude as input frequency becomes very high relative to cutoff?
+
+## Inductors and Magnetic Fields
+
+1. What happens around a conductor when current flows through it?
+2. What quantity does an inductor resist changing abruptly?
+3. Where is energy stored in an ideal inductor?
+4. How does inductive reactance change as frequency increases?
+5. Why are coils central to both the speaker and the radio tuner even though they serve different functions?
+
+## Diodes and Rectification
+
+1. What is the basic difference between forward and reverse bias?
+2. Why does passing a sine wave through a diode create a waveform different from the input?
+3. Why is rectification useful for detecting AM?
+4. What does the RC network after an AM detector diode do?
+5. Why can diode forward-voltage behavior matter when the received signal is very small?
+
+## BJTs, Bias and Amplification
+
+1. Name the three terminals of a BJT.
+2. What is the purpose of establishing a DC bias point in an analog amplifier?
+3. How can a small input variation cause a larger output variation without violating conservation of energy?
+4. Where does the additional output energy come from?
+5. What are cutoff and saturation?
+6. Why can a common-emitter amplifier invert the signal?
+7. Distinguish the DC bias voltage at a node from the AC signal riding on it.
+
+## Oscilloscope Operation
+
+1. What does volts/div control?
+2. What does time/div control?
+3. Why is triggering needed for a stable display of a repetitive waveform?
+4. How would you calculate frequency from a measured period?
+5. Why are two channels useful when testing an amplifier or filter?
+6. What information can DC coupling show that AC coupling may hide?
+
+## Magnetism and Loudspeaker Operation
+
+1. Why does current through the voice coil produce force in the permanent magnet's field?
+2. What happens to the direction of force if coil current reverses?
+3. Why does an AC current cause the diaphragm to move back and forth rather than only in one direction?
+4. Why does diaphragm motion produce sound?
+5. What could increasing the number of coil turns change?
+6. Why can a speaker have different output levels at different frequencies?
+7. Trace the complete energy conversion from electrical source to acoustic wave.
+
+## Electromagnetic Induction and Microphones
+
+1. State Faraday's law qualitatively.
+2. Why can moving a coil through a magnetic field generate voltage without an electrical source connected to the coil?
+3. Why does reversing the speaker experiment allow the same transducer to act as a crude microphone?
+4. What properties of the diaphragm/coil should differ when optimizing for a microphone rather than a speaker?
+5. Why is the raw microphone signal usually insufficient to drive a speaker directly?
+6. Trace the energy conversion from sound wave to electrical signal.
+
+## Amplifier Chain and Coupling
+
+1. Why might a microphone require a preamplifier and a speaker require a separate output stage?
+2. What should you measure at the input and output of an amplifier to estimate voltage gain?
+3. If the amplifier output clips, what does that tell you about its operating range?
+4. Why should each amplifier stage be tested independently before the complete audio chain is assembled?
+5. What role can a coupling capacitor play between stages?
+
+## LC Resonance
+
+1. What two energy-storage mechanisms exchange energy in an LC resonator?
+2. Given L and C, which equation predicts resonant frequency?
+3. If capacitance increases while inductance stays fixed, does resonant frequency rise or fall? Why?
+4. Why can an LC network help a radio distinguish one frequency region from others?
+5. Why might measured resonance differ from the value calculated from nominal L and C?
+6. What does higher Q mean qualitatively for the resonance curve and selectivity?
+
+## Amplitude Modulation
+
+1. In AM, which property of the carrier changes with the information signal?
+2. What is the difference between carrier frequency and modulation/audio frequency?
+3. Where can you visually identify the audio information on an AM waveform?
+4. Why is the carrier frequency much higher than the audio frequency?
+5. If the audio modulation changes faster, what changes in the AM envelope?
+
+## AM Envelope Detection
+
+1. Why is a nonlinear element such as a diode useful in an envelope detector?
+2. What would remain if you rectified AM but performed no useful smoothing?
+3. Why must the detector RC time behavior be chosen relative to both RF carrier and audio variation?
+4. What happens if the detector smooths too aggressively?
+5. Trace a received AM signal through tuner, detector, audio amplifier and speaker, stating what each block contributes.
+
+## RF Frequency and Wavelength
+
+1. What equation relates wavelength, propagation speed and frequency?
+2. As frequency increases, what happens to wavelength?
+3. Why does wavelength matter when designing an antenna?
+4. Roughly why are HF antennas physically much larger than antennas for much higher-frequency services?
+5. Why can a wire that seems electrically negligible at audio frequencies become significant at RF?
+
+## Oscillators
+
+1. What distinguishes an oscillator from an amplifier receiving an external periodic input?
+2. Where does the oscillator's output energy ultimately come from?
+3. What role does feedback play in sustaining oscillation?
+4. What determines the approximate oscillation frequency in an LC oscillator?
+5. Why is frequency stability important in a radio receiver?
+6. What does oscillator frequency drift look like at the receiver output?
+
+## Mixing and Frequency Conversion
+
+1. Why must a mixer be nonlinear?
+2. If RF is 7.001 MHz and LO is 7.000 MHz, what difference frequency is produced?
+3. What other major frequency product accompanies the difference product?
+4. Why is converting an RF signal to an audio or fixed intermediate frequency useful?
+5. If the LO frequency changes while RF stays fixed, what happens to the difference frequency?
+6. In a direct-conversion receiver, why does a nearby CW signal become an audible tone?
+
+## Filters and Bandwidth
+
+1. What does a low-pass filter reject relative to its cutoff?
+2. What does a band-pass filter select?
+3. Why place an RF filter before a receiver mixer?
+4. Why place an audio low-pass filter after a direct-conversion mixer?
+5. What is bandwidth?
+6. What tradeoff appears when a filter is made narrower?
+
+## RF Amplification and Parasitics
+
+1. Why can a circuit that behaves correctly at audio frequencies behave differently at RF?
+2. What are parasitic capacitance and parasitic inductance?
+3. Why do component leads and PCB/breadboard geometry matter increasingly as frequency rises?
+4. Why can unintended feedback be especially problematic in an RF amplifier?
+5. Why should RF stages be characterized individually before integration?
+
+## Direct-Conversion Receivers
+
+1. Draw the minimum signal path of a direct-conversion receiver.
+2. What is the local oscillator doing?
+3. What is the mixer doing?
+4. Where does the audible signal first appear?
+5. Why is this architecture useful pedagogically?
+6. What limitations might motivate moving later to a superheterodyne architecture?
+
+## Superheterodyne Receivers
+
+1. What is an intermediate frequency (IF)?
+2. Why translate many possible RF input frequencies to one fixed IF?
+3. How can a fixed IF simplify filtering and amplification?
+4. What conceptual role does the mixer play in both direct-conversion and superheterodyne receivers?
+5. Explain one reason a superheterodyne receiver can be more complex than the first direct-conversion build.
+
+## Antennas
+
+1. What physical quantity is oscillating in a transmitting antenna?
+2. Why does antenna geometry relate to wavelength?
+3. What is a dipole?
+4. What is the feed point?
+5. Why can antenna orientation affect received signal strength?
+6. Why can antenna location matter as much as or more than transmitter power for some contacts?
+7. What is meant by an antenna's radiation pattern?
+
+## HF Propagation
+
+1. Why is line-of-sight not the only propagation mechanism relevant to HF?
+2. What role can the ionosphere play in long-distance HF communication?
+3. Why can the same HF path work at one time and poorly at another?
+4. Why do frequency, time of day and ionospheric conditions affect communication range?
+5. Why should a failed over-the-air receiver test not immediately be interpreted as a circuit failure?
+
+## CW and Modulation Concepts
+
+1. What information is being controlled in basic CW operation?
+2. Why is CW conceptually simpler for a first transmitter than a voice mode?
+3. How does AM differ conceptually from FM?
+4. What property changes in FM?
+5. Why does SSB require more signal-processing understanding than basic keyed CW?
+
+## RF Power Amplification
+
+1. What is the purpose of an RF output/power stage?
+2. Where does transmitted RF power come from?
+3. Why can nonlinear operation create harmonics?
+4. Why is efficiency more significant in a power stage than in a tiny signal stage?
+5. Why must the output stage be tested into a known load before an antenna is used?
+
+## Impedance, Transmission Lines and Matching
+
+1. Why is a long RF cable not always adequately modeled as an ordinary piece of wire?
+2. What is characteristic impedance?
+3. Why are 50 Ω interfaces common in amateur RF systems?
+4. What happens when a load is poorly matched to a transmission line/source?
+5. What is reflected power conceptually?
+6. What does SWR indicate?
+7. Why is low SWR not by itself proof that an antenna radiates efficiently?
+
+## Harmonics and Output Filtering
+
+1. What is a harmonic?
+2. Why can nonlinear circuits generate harmonics?
+3. Why are unwanted transmitter harmonics undesirable?
+4. What is the job of the output low-pass filter?
+5. Why should the filter be characterized before connecting an antenna?
+6. Why is an oscilloscope alone insufficient for confidently understanding all unwanted frequency components?
+
+## Dummy Loads and Transmitter Validation
+
+1. What is a dummy load intended to emulate?
+2. Why is it preferable to an antenna during initial transmitter development?
+3. What quantities should be understood before replacing the dummy load with an antenna?
+4. Why does testing into a dummy load not validate the antenna system itself?
+5. What additional measurements become relevant once the antenna is introduced?
+
+## FM and VHF Layout
+
+1. In FM, which carrier property contains the information?
+2. Why does moving from HF toward VHF make physical layout more critical?
+3. Why can breadboard contacts and jumper wires become part of the RF circuit unintentionally?
+4. What are two examples of parasitic effects that are negligible at low frequency but significant at VHF?
+5. Why should VHF oscillator, filter and detector behavior be demonstrated separately before full integration?
+
+## Canadian Amateur-Radio Regulation
+
+Use the current ISED references in this document before answering.
+
+1. What certification/qualification do you currently need for the amateur operation you intend to perform?
+2. Is your intended frequency within an amateur allocation available to your qualification?
+3. What current bandwidth/mode restrictions apply?
+4. What identification requirements apply?
+5. Are there applicable power limits or qualification-dependent privileges?
+6. Which source is authoritative if an old tutorial or foreign amateur-radio guide conflicts with current Canadian requirements?
+
+Do not memorize regulatory answers from this repository. The validation skill is knowing how to verify them from current ISED material.
+
+---
+
 # Definition of Done
 
 At the end, answer these from first principles:
