@@ -1302,24 +1302,256 @@ Sophisticated **test equipment is fine**. The restriction is on hiding the mecha
 
 ---
 
-# Suggested 12-Week Path
+# Four-Day Intensive Path
 
-| Week | Objective |
-|---|---|
-| 1 | DC fundamentals, multimeter, Ohm's law, dividers |
-| 2 | capacitors, inductors, diodes, oscilloscope |
-| 3 | transistor switch and common-emitter amplifier |
-| 4 | loudspeaker build and characterization |
-| 5 | microphone, preamp and microphone-to-speaker chain |
-| 6 | LC resonance, AM waveform and detector |
-| 7 | complete AM receiver |
-| 8 | oscillator and RF-filter experiments |
-| 9 | mixer experiments and direct-conversion modules |
-| 10 | complete HF receive chain and antenna experiments |
-| 11 | transmitter block study and dummy-load measurements |
-| 12 | filtering, antenna measurement, ISED checkpoint and integration |
+The target is **four full build days**, not twelve weeks. This requires aggressive just-in-time learning: do not read entire textbooks or courses. Read only the linked section needed to understand the experiment immediately in front of you.
 
-The calendar is optional. Advance based on demonstrated understanding.
+Assume approximately **8–12 focused hours per day** and obtain all parts/test equipment before Day 1.
+
+The four-day objective is:
+
+`fundamentals -> speaker -> microphone -> amplifier -> AM receiver -> HF receiver`
+
+The low-power amateur transmitter remains the next project after the four-day sprint unless the receiver work finishes early and the measurement/regulatory prerequisites are already satisfied.
+
+## Before Day 1 — Preparation Only
+
+Do this before the clock starts:
+
+- acquire the consolidated BOM
+- acquire multimeter, oscilloscope and function generator
+- obtain breadboards, soldering tools and hookup wire
+- organize resistors/capacitors/transistors by value/type
+- obtain magnets, magnet wire, ferrite rod, variable capacitor and antenna wire
+- bookmark the references in this document
+- verify test equipment powers on and probes/leads work
+
+Do not spend Day 1 shopping or configuring equipment.
+
+## Day 1 — Learn Electronics by Building a Speaker
+
+### Morning — 3–4 h
+
+Learn only:
+
+- voltage/current/resistance
+- Ohm's law
+- series/parallel circuits
+- voltage dividers
+- AC versus DC
+- frequency/amplitude/period
+- capacitor intuition
+- inductor/magnetic-field intuition
+- diode intuition
+- basic BJT operation
+- multimeter and oscilloscope operation
+
+Execute Labs 0A–0F rapidly.
+
+Do not pursue mathematical circuit-analysis depth beyond what the experiments require.
+
+### Afternoon — 3–4 h
+
+Build the Stage 1 loudspeaker.
+
+Required sequence:
+
+1. wind coil
+2. measure coil resistance
+3. place coil in magnetic field
+4. verify polarity-dependent motion
+5. attach diaphragm
+6. drive with function generator
+7. produce audible tone
+8. sweep frequency
+
+### Evening — 1–2 h
+
+Review the measurements and explain from memory:
+
+`voltage -> current -> magnetic field/force -> diaphragm -> sound`
+
+**Day 1 exit criterion:** homemade speaker produces a recognizable tone and you can explain why.
+
+---
+
+## Day 2 — Reverse the Physics: Microphone + Amplifier
+
+### Morning — 2 h
+
+Learn only:
+
+- Faraday's law qualitatively
+- electromagnetic induction
+- transistor bias
+- common-emitter amplification
+- coupling capacitors
+
+First use the Day 1 speaker as a microphone and observe its generated waveform.
+
+### Midday — 3–4 h
+
+Build the dedicated dynamic microphone.
+
+Measure the raw microphone output before adding electronics.
+
+### Afternoon — 2–3 h
+
+Build/debug the discrete microphone preamplifier and audio output stage.
+
+Bring up in this order:
+
+`microphone -> scope`
+
+`microphone -> preamp -> scope`
+
+`microphone -> preamp -> output amp -> scope`
+
+`microphone -> preamp -> output amp -> homemade speaker`
+
+### Evening — 1 h
+
+Trace one spoken sound through every energy conversion.
+
+**Day 2 exit criterion:**
+
+`voice -> homemade microphone -> discrete electronics -> homemade speaker`
+
+works well enough to recognize the input sound.
+
+---
+
+## Day 3 — Build the AM Radio
+
+### Morning — 2–3 h
+
+Learn only:
+
+- capacitor/inductor AC behavior
+- LC resonance
+- resonant frequency
+- Q/selectivity intuition
+- amplitude modulation
+- diode rectification
+- RC envelope detection
+
+### Lab — 1–2 h
+
+Before attempting reception:
+
+1. build LC resonator
+2. predict resonance
+3. sweep it with the function generator
+4. measure resonance
+5. build diode + RC detector
+6. observe rectification/envelope behavior
+
+### Afternoon/Evening — 4–6 h
+
+Build the AM receiver incrementally:
+
+`LC tuner -> detector -> audio amplifier -> speaker`
+
+Test each stage before connecting the next.
+
+Then attach the antenna and tune for a strong broadcast station.
+
+Do not optimize sensitivity or audio quality yet.
+
+**Day 3 exit criterion:** receive at least one broadcast station and explain tuning, detection and amplification as separate operations.
+
+---
+
+## Day 4 — From Radio to Amateur HF Receiver
+
+### Morning — 2–3 h
+
+Learn only:
+
+- wavelength/frequency
+- RF filters
+- oscillation
+- local oscillators
+- nonlinear mixing
+- sum/difference frequencies
+- direct-conversion receiver architecture
+- basic antenna resonance
+- HF propagation intuition
+
+### Midday — 2–3 h
+
+Build/test modules separately:
+
+1. local oscillator
+2. mixer
+3. audio low-pass filter
+4. RF input filter
+
+Use known laboratory signals wherever possible rather than debugging against unknown over-the-air conditions.
+
+The key experiment is to demonstrate frequency conversion:
+
+`RF + LO -> audible difference frequency`
+
+### Afternoon/Evening — 4–6 h
+
+Integrate:
+
+`antenna -> RF filter -> mixer + LO -> audio filter -> amplifier -> headphones/speaker`
+
+Attempt to receive an HF amateur signal.
+
+If reception fails, the Day 4 fallback completion criterion is a fully bench-validated receive chain where oscillator, mixer, filtering and audio stages have each been independently demonstrated.
+
+### Final Review — 1 h
+
+From a blank page, draw and explain:
+
+- speaker
+- microphone
+- AM receiver
+- direct-conversion HF receiver
+
+For every block state:
+
+- physical principle
+- input
+- output
+- expected frequency
+- expected signal magnitude/gain behavior
+- measurement used to verify it
+
+**Day 4 primary exit criterion:** receive an amateur HF signal with the homemade receiver.
+
+**Day 4 minimum exit criterion:** all receiver subsystems work independently and frequency conversion has been experimentally demonstrated.
+
+---
+
+# After the Four Days — First Transmitter
+
+Stage 5 follows immediately after the sprint.
+
+Do not squeeze transmitter construction into Day 4 at the expense of understanding the receiver. The transmitter introduces additional requirements—output power, harmonics, filtering, impedance matching, antenna loading, spectral measurement and regulatory compliance—that deserve their own measured bring-up.
+
+At the end of Day 4 you should already understand most of the conceptual blocks needed to begin it.
+
+# Four-Day Scope Discipline
+
+To make this schedule realistic:
+
+- **Do not** complete entire courses.
+- **Do not** optimize aesthetics.
+- **Do not** design PCBs.
+- **Do not** chase high audio fidelity.
+- **Do not** optimize receiver sensitivity.
+- **Do not** build multiple alternative circuits.
+- **Do not** spend hours deriving equations already covered by a reference.
+- **Do** predict before measuring.
+- **Do** use the oscilloscope constantly.
+- **Do** validate every block independently.
+- **Do** move forward once the physical principle has been demonstrated.
+
+The four-day goal is not mastery of electronics or RF engineering. It is a working first-principles mental model backed by physical experiments and functioning prototypes.
 
 # Definition of Done
 
